@@ -4,9 +4,6 @@
     "type": "laravel-module",
     "version": "v1.0.1",
     "license": ["GPL-3.0-or-later"],
-    "require": {
-        "alexusmai/laravel-file-manager": "dev-crmcms"
-    },
     "authors": [
         {
             "name": "SimplePleb",

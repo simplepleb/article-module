@@ -4,9 +4,6 @@
     "type": "laravel-module",
     "version": "v1.0.0",
     "license": ["GPL-3.0-or-later"],
-    "require": {
-        "alexusmai/laravel-file-manager": "dev-crmcms"
-    },
     "authors": [
         {
             "name": "SimplePleb",
@@ -27,11 +24,5 @@
         "psr-4": {
             "Modules\\Article\\": ""
         }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/simplepleb/laravel-file-manager"
-        }
-    ]
+    }
 }

@@ -24,5 +24,6 @@
         "psr-4": {
             "Modules\\Article\\": ""
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

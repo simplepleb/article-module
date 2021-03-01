@@ -49,12 +49,13 @@
 
                         <a href="{{route('frontend.categories.show', [encode_id($$module_name_singular->category_id), $$module_name_singular->category->slug])}}" class="badge badge-sm badge-warning text-uppercase px-3">{{$$module_name_singular->category_name}}</a>
                     </p>
-
-                    <p>
-                        @foreach ($$module_name_singular->tags as $tag)
-                        <a href="{{route('frontend.tags.show', [encode_id($tag->id), $tag->slug])}}" class="badge badge-sm badge-info text-uppercase px-3">{{$tag->name}}</a>
-                        @endforeach
-                    </p>
+                    @if( Module::has('tag') )
+                        <p>
+                            @foreach ($$module_name_singular->tags as $tag)
+                            <a href="{{route('frontend.tags.show', [encode_id($tag->id), $tag->slug])}}" class="badge badge-sm badge-info text-uppercase px-3">{{$tag->name}}</a>
+                            @endforeach
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -81,7 +82,7 @@
         </div>
     </div>
 </article>
-
+@if( Module::has('comment') )
 <div class="section section-md bg-white text-black pt-0 line-bottom-light">
     <div class="container">
         <div class="row justify-content-center">
@@ -318,6 +319,7 @@
         </div>
     </div>
 </div>
+@endif
 @endsection
 
 @push ("after-scripts")

@@ -59,16 +59,18 @@
                 </ul>
                 <hr>
 
-                <h4>Tags</h4>
-                <ul>
-                    @foreach($$module_name_singular->tags as $row)
-                    <li>
-                        <a href="{{route('backend.tags.show', $row->id)}}">{{$row->name}}</a>
-                    </li>
-                    @endforeach
-                </ul>
-                <hr>
-
+                @if( \Module::has('tag') )
+                    <h4>Tags</h4>
+                    <ul>
+                        @foreach($$module_name_singular->tags as $row)
+                        <li>
+                            <a href="{{route('backend.tags.show', $row->id)}}">{{$row->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    <hr>
+                @endif
+                @if( \Module::has('comment') )
                 <h4>Comments</h4>
                 <ul>
                     @foreach($$module_name_singular->comments as $row)
@@ -78,7 +80,7 @@
                     @endforeach
                 </ul>
                 <hr>
-
+                @endif
                 @include('article::backend.includes.activitylog')
                 <hr>
 

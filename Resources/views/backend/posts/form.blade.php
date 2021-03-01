@@ -133,6 +133,7 @@
         </div>
     </div>
 </div>
+@if(Module::has('tag'))
 <div class="row">
     <div class="col">
         <div class="form-group">
@@ -151,6 +152,7 @@
         </div>
     </div>
 </div>
+@endif
 <div class="row">
     <div class="col-6">
         <div class="form-group">

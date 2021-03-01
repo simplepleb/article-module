@@ -32,6 +32,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
+
 class Post extends BaseModel implements Feedable
 {
     use HasFactory;
@@ -53,7 +54,10 @@ class Post extends BaseModel implements Feedable
 
     public function tags()
     {
-        return $this->morphToMany('Modules\Tag\Entities\Tag', 'taggable');
+        if( \Module::has('tag') ) {
+            return $this->morphToMany('Modules\Tag\Entities\Tag', 'taggable');
+        }
+
     }
 
     /**
@@ -61,7 +65,10 @@ class Post extends BaseModel implements Feedable
      */
     public function comments()
     {
-        return $this->morphMany('Modules\Comment\Entities\Comment', 'commentable')->where('status', '=', 1);
+        if( \Module::has('comment') ) {
+            return $this->morphMany('Modules\Comment\Entities\Comment', 'commentable')->where('status', '=', 1);
+        }
+
     }
 
     /**

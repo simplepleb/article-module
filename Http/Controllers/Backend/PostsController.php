@@ -35,6 +35,9 @@ use Modules\Article\Entities\Category;
 use Modules\Article\Events\PostCreated;
 use Modules\Article\Events\PostUpdated;
 use Modules\Article\Http\Requests\Backend\PostsRequest;
+/*use Nwidart\Modules\Facades\Module;*/
+
+use Nwidart\Modules\Module;
 use Spatie\Activitylog\Models\Activity;
 use Yajra\DataTables\DataTables;
 
@@ -155,7 +158,7 @@ class PostsController extends Controller
         $$module_name = [];
 
         foreach ($query_data as $row) {
-            $$module_name[] = [
+            ${$module_name}[] = [
                 'id'   => $row->id,
                 'text' => $row->name,
             ];
@@ -212,7 +215,10 @@ class PostsController extends Controller
         $data['created_by_name'] = auth()->user()->name;
 
         $$module_name_singular = $module_model::create($data);
-        $$module_name_singular->tags()->attach($request->input('tags_list'));
+        if( \Module::has('tag') ) {
+            $$module_name_singular->tags()->attach($request->input('tags_list'));
+        }
+
 
         event(new PostCreated($$module_name_singular));
 
@@ -250,6 +256,12 @@ class PostsController extends Controller
                                 ->paginate();
 
         Log::info(label_case($module_title.' '.$module_action).' | User:'.Auth::user()->name.'(ID:'.Auth::user()->id.')');
+
+        if( \Module::has('comment'))
+            $comment_active = true;
+        if( \Module::has('tag'))
+            $comment_active = true;
+
 
         return view(
             "article::backend.$module_name.show",
@@ -310,12 +322,19 @@ class PostsController extends Controller
 
         $$module_name_singular->update($request->except('tags_list'));
 
-        if ($request->input('tags_list') == null) {
-            $tags_list = [];
-        } else {
-            $tags_list = $request->input('tags_list');
+        if( \Module::has('tag')) {
+            if ($request->input('tags_list') == null) {
+                $tags_list = [];
+            } else {
+                $tags_list = $request->input('tags_list');
+            }
+
+            $$module_name_singular->tags()->sync($tags_list);
         }
-        $$module_name_singular->tags()->sync($tags_list);
+        else {
+            $tags_list = null;
+        }
+
 
         event(new PostUpdated($$module_name_singular));
 

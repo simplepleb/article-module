@@ -215,7 +215,7 @@ class PostsController extends Controller
         $data['created_by_name'] = auth()->user()->name;
 
         $$module_name_singular = $module_model::create($data);
-        if( \Module::has('tag') ) {
+        if( \Module::has('Tag') ) {
             $$module_name_singular->tags()->attach($request->input('tags_list'));
         }
 
@@ -257,9 +257,9 @@ class PostsController extends Controller
 
         Log::info(label_case($module_title.' '.$module_action).' | User:'.Auth::user()->name.'(ID:'.Auth::user()->id.')');
 
-        if( \Module::has('comment'))
+        if( \Module::has('Comment'))
             $comment_active = true;
-        if( \Module::has('tag'))
+        if( \Module::has('Tag'))
             $comment_active = true;
 
 
@@ -322,7 +322,7 @@ class PostsController extends Controller
 
         $$module_name_singular->update($request->except('tags_list'));
 
-        if( \Module::has('tag')) {
+        if( \Module::has('Tag')) {
             if ($request->input('tags_list') == null) {
                 $tags_list = [];
             } else {

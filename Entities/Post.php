@@ -54,7 +54,7 @@ class Post extends BaseModel implements Feedable
 
     public function tags()
     {
-        if( \Module::has('tag') ) {
+        if( \Module::has('Tag') ) {
             return $this->morphToMany('Modules\Tag\Entities\Tag', 'taggable');
         }
 
@@ -65,7 +65,7 @@ class Post extends BaseModel implements Feedable
      */
     public function comments()
     {
-        if( \Module::has('comment') ) {
+        if( \Module::has('Comment') ) {
             return $this->morphMany('Modules\Comment\Entities\Comment', 'commentable')->where('status', '=', 1);
         }
 

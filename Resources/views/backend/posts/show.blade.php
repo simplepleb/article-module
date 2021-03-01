@@ -59,7 +59,7 @@
                 </ul>
                 <hr>
 
-                @if( \Module::has('tag') )
+                @if( \Module::has('Tag') )
                     <h4>Tags</h4>
                     <ul>
                         @foreach($$module_name_singular->tags as $row)
@@ -70,7 +70,7 @@
                     </ul>
                     <hr>
                 @endif
-                @if( \Module::has('comment') )
+                @if( \Module::has('Comment') )
                 <h4>Comments</h4>
                 <ul>
                     @foreach($$module_name_singular->comments as $row)

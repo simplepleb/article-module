@@ -91,7 +91,7 @@ class CategoriesController extends Controller
         $module_action = 'Show';
 
         $$module_name_singular = $module_model::findOrFail($id);
-        if( \Module::has('tag') && \Module::has('comments') ) {
+        if( \Module::has('Tag') && \Module::has('Comment') ) {
             $posts = $$module_name_singular->posts()->with('category', 'tags', 'comments')->paginate();
         }
         else{

@@ -133,7 +133,7 @@
         </div>
     </div>
 </div>
-@if(Module::has('tag'))
+@if(Module::has('Tag'))
 <div class="row">
     <div class="col">
         <div class="form-group">

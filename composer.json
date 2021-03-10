@@ -10,6 +10,9 @@
             "email": "plebeian.tribune@protonmail.com"
         }
     ],
+    "require": {
+        "php": "^7.3.0"
+    },
     "extra": {
         "laravel": {
             "providers": [

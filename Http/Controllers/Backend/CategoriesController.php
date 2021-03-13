@@ -110,7 +110,7 @@ class CategoriesController extends Controller
         $$module_name = [];
 
         foreach ($query_data as $row) {
-            $$module_name[] = [
+            ${$module_name}[] = [
                 'id'   => $row->id,
                 'text' => $row->name.' (Slug: '.$row->slug.')',
             ];

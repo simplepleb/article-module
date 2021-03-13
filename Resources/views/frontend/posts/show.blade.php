@@ -67,11 +67,11 @@
 
                         @php $title_text = $$module_name_singular->name; @endphp
 
-                        <button class="btn btn-sm mr-3 btn-icon-only btn-pill btn-twitter d-inline" data-sharer="twitter" data-via="LaravelStarter" data-title="{{$title_text}}" data-hashtags="LaravelStarter" data-url="{{url()->full()}}" data-toggle="tooltip" title="Share on Twitter" data-original-title="Share on Twitter">
+                        <button class="btn btn-sm mr-3 btn-icon-only btn-pill btn-twitter d-inline" data-sharer="twitter" data-via="{{ config('app.name') }}" data-title="{{$title_text}}" data-hashtags="{{ config('app.name') }}" data-url="{{url()->full()}}" data-toggle="tooltip" title="Share on Twitter" data-original-title="Share on Twitter">
                             <span class="btn-inner-icon"><i class="fab fa-twitter"></i></span>
                         </button>
 
-                        <button class="btn btn-sm mr-3 btn-icon-only btn-pill btn-facebook d-inline" data-sharer="facebook" data-hashtag="LaravelStarter" data-url="{{url()->full()}}" data-toggle="tooltip" title="Share on Facebook" data-original-title="Share on Facebook">
+                        <button class="btn btn-sm mr-3 btn-icon-only btn-pill btn-facebook d-inline" data-sharer="facebook" data-hashtag="{{ config('app.name') }}" data-url="{{url()->full()}}" data-toggle="tooltip" title="Share on Facebook" data-original-title="Share on Facebook">
                             <span class="btn-inner-icon"><i class="fab fa-facebook-f"></i></span>
                         </button>
                     </div>
@@ -189,7 +189,7 @@
                         <div class="card bg-soft rounded p-4 mb-4">
                             <div class="d-flex justify-content-between mb-4">
                                 <span class="font-small">
-                                    <a href="#"><img class="avatar-sm img-fluid rounded-circle mr-2" src="{{asset('img/avatars/'.rand(1,8).'.jpg')}}" alt="avatar" /> <span class="font-weight-bold">{{$comment->user_name}}</span> </a>
+                                    <a href="#"><img class="avatar-sm img-fluid rounded-circle mr-2" src="https://placekitten.com/50/50?id={{ time() }}" alt="avatar" /> <span class="font-weight-bold">{{$comment->user_name}}</span> </a>
                                     <span class="ml-2">2 min ago</span>
                                 </span>
                                 <div>
@@ -299,7 +299,7 @@
                         <div class="card bg-soft rounded p-4 ml-5 mb-4">
                             <div class="d-flex justify-content-between mb-4">
                                 <span class="font-small">
-                                    <a href="#"><img class="avatar-sm img-fluid rounded-circle mr-2" src="{{asset('img/avatars/'.rand(1,8).'.jpg')}}" alt="avatar" /> <span class="font-weight-bold">{{$comment_reply->user_name}}</span> </a>
+                                    <a href="#"><img class="avatar-sm img-fluid rounded-circle mr-2" src="https://picsum.photos/seed/picsum/50/50" alt="avatar" /> <span class="font-weight-bold">{{$comment_reply->user_name}}</span> </a>
                                 </span>
                                 <div>
                                     <button class="btn btn-link text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Report comment"><i class="far fa-flag"></i></button>

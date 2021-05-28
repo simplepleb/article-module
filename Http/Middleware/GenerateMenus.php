@@ -14,7 +14,7 @@
  * @website https://www.simple-pleb.com
  * @source https://github.com/simplepleb/article-module
  *
- * @license Free to do as you please
+ * @license MIT For Premium Clients
  *
  * @since 1.0
  *
@@ -56,7 +56,7 @@ class GenerateMenus
             ]);
 
             // Submenu: Posts
-            $articles_menu->add('<i class="c-sidebar-nav-icon fas fa-file-alt"></i> Posts', [
+            $articles_menu->add('Posts', [
                 'route' => 'backend.posts.index',
                 'class' => 'c-sidebar-nav-item',
             ])
@@ -69,7 +69,7 @@ class GenerateMenus
                 'class' => "c-sidebar-nav-link",
             ]);
             // Submenu: Categories
-            $articles_menu->add('<i class="c-sidebar-nav-icon fas fa-sitemap"></i> Categories', [
+            $articles_menu->add(' Categories', [
                 'route' => 'backend.categories.index',
                 'class' => 'c-sidebar-nav-item',
             ])

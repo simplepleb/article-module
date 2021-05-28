@@ -14,7 +14,7 @@
  * @website https://www.simple-pleb.com
  * @source https://github.com/simplepleb/article-module
  *
- * @license Free to do as you please
+ * @license MIT For Premium Clients
  *
  * @since 1.0
  *
@@ -28,14 +28,14 @@ use Auth;
 use Carbon\Carbon;
 use Flash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Str;
 use Log;
 use Modules\Article\Entities\Category;
 use Modules\Article\Events\PostCreated;
 use Modules\Article\Events\PostUpdated;
 use Modules\Article\Http\Requests\Backend\PostsRequest;
-/*use Nwidart\Modules\Facades\Module;*/
+
 
 use Nwidart\Modules\Module;
 use Spatie\Activitylog\Models\Activity;
@@ -218,7 +218,6 @@ class PostsController extends Controller
         if( \Module::has('Tag') ) {
             $$module_name_singular->tags()->attach($request->input('tags_list'));
         }
-
 
         event(new PostCreated($$module_name_singular));
 

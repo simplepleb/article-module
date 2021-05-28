@@ -14,7 +14,7 @@
  * @website https://www.simple-pleb.com
  * @source https://github.com/simplepleb/article-module
  *
- * @license Free to do as you please
+ * @license MIT For Premium Clients
  *
  * @since 1.0
  *
@@ -25,6 +25,8 @@ namespace Modules\Article\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Modules\Article\Events\PostViewed;
+use Modules\Thememanager\Entities\SiteTheme;
+use Theme;
 
 class PostsController extends Controller
 {
@@ -96,6 +98,34 @@ class PostsController extends Controller
 
         event(new PostViewed($$module_name_singular));
 
+        if( \Module::has('Thememanager')) {
+            $view_file = 'blank';
+
+            $theme = Modules\Thememanager\Entities\SiteTheme::where('active', 1)->first();
+
+            if( $theme ) {
+
+                if(!empty($theme->page_styles)) {
+                    //dd( $meta_page_type->page_styles );
+                    $page_types = json_decode($theme->page_styles);
+                    // dd( $page_types );
+                    $blade_file = $page_types->post;
+                    $blade_path = public_path('themes/'.$theme->slug.'/views/'.$blade_file.'.blade.php');
+                    if( file_exists($blade_path)) {
+                        $view_file = $blade_file;
+
+                        Theme::uses($theme->slug); // oreo, huckbee
+
+                    return Theme::view($view_file, compact('module_title', 'module_name', 'module_icon', 'module_action', 'module_name_singular', "$module_name_singular", 'meta_page_type'));
+                }
+
+
+                }
+            }
+
+        }
+
+        // dd( $view_file );
         return view(
             "article::frontend.$module_name.show",
             compact('module_title', 'module_name', 'module_icon', 'module_action', 'module_name_singular', "$module_name_singular", 'meta_page_type')

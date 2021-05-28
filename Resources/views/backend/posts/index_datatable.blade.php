@@ -53,7 +53,7 @@
                                 Name
                             </th>
                             <th>
-                                Categoty
+                                Category
                             </th>
                             <th class="text-right">
                                 Action

@@ -115,7 +115,7 @@ class ArticleServiceProvider extends ServiceProvider
      */
     protected function registerCommands($namespace = '')
     {
-        $finder = new Finder(); // from Symfony\Component\Finder;
+        $finder = new Finder();
         $finder->files()->name('*.php')->in(__DIR__.'/../Console');
 
         $classes = [];
